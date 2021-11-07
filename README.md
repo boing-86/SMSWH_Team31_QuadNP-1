@@ -7,6 +7,7 @@ installed open package
 2) navsat_nmea_driver
 3) ublox_gps
 
+
 ## 🔶서비스 개요
 
 ***"마.피.아 : 마침내 피할 수 없는 아날로그 in the d1g1tal"***
@@ -47,20 +48,21 @@ installed open package
         - 거리 정확도 : 1~3cm
         - 원리 : 최소 3개 위성을 사용한 삼각 측량법
         
-        ![Untitled](%5B%E1%84%90%E1%85%B5%E1%86%B731%5D%20SMSWH%202021%20%E1%84%80%E1%85%B5%E1%84%92%E1%85%AC%E1%86%A8%E1%84%89%E1%85%A5%20f610a89c753541c6990c465d249fff71/Untitled.png)
+        ![Untitled (20)](https://user-images.githubusercontent.com/69629703/140632743-77b128d8-11e9-4b87-9b5e-a0ba9615eac7.png)
+
         
     - RTK (Real Time Kinetmatic)
         
         실시간 운동학적 포지셔닝. 위성 네비게이션 시스템의 일반적인 오류를 수정합니다. GNSS 네트워크 방식으로 계산한 RTK 보정신호를 사용자 인근에 배치된 다수의 기준국들로부터 받아 종합적으로 활용하여 요청자 위치에 적합한 신호를 계산하는 방식으로 좌표를 출력함. 특히 위 서비스에서 사용하는  VRS(Virtual Reference System)방식은 요청자 GPS로부터 자신의 위치를 받아 해당 지점에 마치 GNSS 위성기준점이 있는 것과 같은 유사한 GNSS 관측 데이터를 생성하여 전달하기 때문에 오차범위 1cm 내의 정밀 좌표를 획득할 수 있음.
         
-        ![Untitled](%5B%E1%84%90%E1%85%B5%E1%86%B731%5D%20SMSWH%202021%20%E1%84%80%E1%85%B5%E1%84%92%E1%85%AC%E1%86%A8%E1%84%89%E1%85%A5%20f610a89c753541c6990c465d249fff71/Untitled%201.png)
+        ![Untitled (21)](https://user-images.githubusercontent.com/69629703/140632746-8010a1f6-2b62-4824-aa71-b61d983b2bcb.png)
         
 - 차량 제어
     - 제어알고리즘 - Pure Pursuit
         
         차량의 현재 위치에서 목표점까지 이동하기 위한 곡률을 계산해 차량 조향값을 출력해 작동하는 경로 추종 알고리즘. 차량의 일정 거리 앞에 위치한 경로상의 목표점(이하 Lookahead Point)을 선택하는 것이다. 
         
-        전륜조향각($\delta$, 사용하는 차량은 전륜구동차량으로 전륜조향각에 대해서만 다룸)에 대한 모델링은 차량동역학 bicycle model을 따르며, 다음과 같이 차량의 전륜조향각($\delta$)를 구할 수 있다. 참고 Figure1. Bicycle Model.
+        전륜조향각(δ, 사용하는 차량은 전륜구동차량으로 전륜조향각에 대해서만 다룸)에 대한 모델링은 차량동역학 bicycle model을 따르며, 다음과 같이 차량의 전륜조향각(δ)를 구할 수 있다. 참고 Figure1. Bicycle Model.
         
         ![image](https://user-images.githubusercontent.com/69629703/140632510-5fe1d2c4-2673-4422-8465-d9f79881fbb9.png)
         
@@ -68,26 +70,17 @@ installed open package
         R : 후륜에서 목표지점까지의 곡률 반경(L에 비해 R이 큼)
         
         ![Untitled (18)](https://user-images.githubusercontent.com/69629703/140632551-f1171a39-9346-45c3-930f-24662f604347.png)
+        
         Figure1. Bicycle Model
         
-        Lookahead Point 를 선택하기 위해 필요한 Lookahead Distance(전방 주시 예견거리, 이하 Ld)를 통해 전륜조향각($\delta$)를 계산할 수 있다. Ld가 짧으면 진동이 발생하며, 길면 Cut-Corner(코너에서 예정경로보다 빨리 코너링을 함) 현상이 발생한다. 본 서비스에서는 저속으로 이동하기 때문에 최대속력과 최소속력의 차이가 적으므로 고정 Ld값을 사용한다.
+        Lookahead Point 를 선택하기 위해 필요한 Lookahead Distance(전방 주시 예견거리, 이하 Ld)를 통해 전륜조향각(δ)를 계산할 수 있다. Ld가 짧으면 진동이 발생하며, 길면 Cut-Corner(코너에서 예정경로보다 빨리 코너링을 함) 현상이 발생한다. 본 서비스에서는 저속으로 이동하기 때문에 최대속력과 최소속력의 차이가 적으므로 고정 Ld값을 사용한다.
         
-        ![Untitled](%5B%E1%84%90%E1%85%B5%E1%86%B731%5D%20SMSWH%202021%20%E1%84%80%E1%85%B5%E1%84%92%E1%85%AC%E1%86%A8%E1%84%89%E1%85%A5%20f610a89c753541c6990c465d249fff71/Untitled%203.png)
+        ![Untitled (19)](https://user-images.githubusercontent.com/69629703/140632649-37e61015-a265-4934-83a7-115d62a7e31d.png)
         
-        차량축간거리 L은 0.35m로 R을 구하여 전륜조향각($\delta$)를 구한다. 
+        차량축간거리 L은 0.35m로 R을 구하여 전륜조향각(δ)를 구한다. 
         
         <aside>
-        ✏️ $\delta = tan^{-1}(\frac{L}{R})$
-        
-        $\frac{Ld}{sin2\alpha} = \frac{sin90-\alpha}{R}$
-        
-        $\frac{Ld}{2sin\alpha \cdot cos \alpha} = \frac{R}{cos\alpha}$
-        
-        $\therefore \frac{1}{R} = \frac{2 \cdot sin\alpha}{Ld}$
-        
-        $\therefore \delta = tan^{-1}(\frac{2 \cdot L \cdot sin\alpha}{Ld})$
-        
-        $\alpha = 90- tan^{-1}(\frac{y}{x})$ ← 경로-현재위치를 통해 실시간으로 계산하여 $\delta$ 를 구함
+        ![image](https://user-images.githubusercontent.com/69629703/140632715-d607067f-8780-45a2-b914-9b173ccdea9f.png)
         
         </aside>
         

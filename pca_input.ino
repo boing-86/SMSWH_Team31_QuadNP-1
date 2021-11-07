@@ -16,7 +16,7 @@ int servo, throttle, rx, ry;
 
 void pwm_cb(const std_msgs::Int32& cmd_msg){
   servo = cmd_msg.data; //set servo angle, should be from 0-180
-  throttle = 100;
+  throttle = 65;
   rx = constrain(map(servo,0,180,150,600),150,600);
   ry = constrain(map(throttle,0,180,150,600),150,600);
   pwm.setPWM(0,0,rx); //pca9685
@@ -34,7 +34,7 @@ void setup(){
 
   //done setting
   rx = constrain(map(80,0,180,150,600),150,600);
-  ry = constrain(map(60,0,180,150,600),150,600);
+  ry = constrain(map(65,0,180,150,600),150,600);
   pwm.setPWM(0,0,rx); //pca9685
   pwm.setPWM(1,0,ry);
   delay(1000);

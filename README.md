@@ -1,11 +1,11 @@
 # SMSWH_Team31_QuadNP
-2021 Sookmyung Software Hackathon
+**2021 Sookmyung Software Hackathon**
 
 Ubuntu 18.04 LTS ROS melodic
 installed open package
 1) rosserial
-2) navsat_nmea_driver
-3) ublox_gps
+2) ublox_gps (GPS : ZED-C099 driver)
+3) gps_common (coordinate : wgs -> utm)
 
 
 ## 🔶서비스 개요
@@ -19,13 +19,13 @@ installed open package
 
 코로나19를 겪으며 학우들과의 소통이 부재한 요즘, 어떻게 하면 다시 일상으로 돌아가 서로의 따뜻한 감정을 나눌 수 있을까? 
 
-저희의 RC Car가  가지는 의미 2가지는 다음과 같습니다.
+이 프로젝트의 RC Car가  가지는 의미 2가지는 다음과 같다.
 
 🚖 Radio Controlled Car
 
 📻 Radio Communication Car
 
-첫 번째로, 저희 RC Car는 무선 조종 차량으로서, 장소에 국한되지 않고 무선으로 달릴 수 있는 차량 플랫폼을 의미합니다. 두 번째는, 라디오에서 사연을 읽어주듯, 저희 RC Car는 실내외에서 학우들 사이를 주행하며 편지를 받아 사회자에 전달합니다.
+첫 번째로, 저희 RC Car는 무선 조종 차량으로서, 장소에 국한되지 않고 무선으로 달릴 수 있는 차량 플랫폼을 의미한다. 두 번째는, 라디오에서 사연을 읽어주듯, 저희 RC Car는 실내외에서 학우들 사이를 주행하며 편지를 받아 사회자에 전달한다.
 
 우리의 로봇 차량 플랫폼인 포피스(Poffice)가 여러분들의 감정을 전달하러 갑니다! 
 
@@ -64,18 +64,19 @@ installed open package
         
         전륜조향각(δ, 사용하는 차량은 전륜구동차량으로 전륜조향각에 대해서만 다룸)에 대한 모델링은 차량동역학 bicycle model을 따르며, 다음과 같이 차량의 전륜조향각(δ)를 구할 수 있다. 참고 Figure1. Bicycle Model.
         
-        ![image](https://user-images.githubusercontent.com/69629703/140632510-5fe1d2c4-2673-4422-8465-d9f79881fbb9.png)
+        <img src="https://user-images.githubusercontent.com/69629703/140632510-5fe1d2c4-2673-4422-8465-d9f79881fbb9.png" width="430" height="120"/> 
+
         
         L : 차량 축간 거리
         R : 후륜에서 목표지점까지의 곡률 반경(L에 비해 R이 큼)
         
-        ![Untitled (18)](https://user-images.githubusercontent.com/69629703/140632551-f1171a39-9346-45c3-930f-24662f604347.png){: width="70%" height="70%"}
+        <img src="https://user-images.githubusercontent.com/69629703/140632551-f1171a39-9346-45c3-930f-24662f604347.png" width="600" height="500"/>  
         
         Figure1. Bicycle Model
         
         Lookahead Point 를 선택하기 위해 필요한 Lookahead Distance(전방 주시 예견거리, 이하 Ld)를 통해 전륜조향각(δ)를 계산할 수 있다. Ld가 짧으면 진동이 발생하며, 길면 Cut-Corner(코너에서 예정경로보다 빨리 코너링을 함) 현상이 발생한다. 본 서비스에서는 저속으로 이동하기 때문에 최대속력과 최소속력의 차이가 적으므로 고정 Ld값을 사용한다.
         
-        ![Untitled (19)](https://user-images.githubusercontent.com/69629703/140632649-37e61015-a265-4934-83a7-115d62a7e31d.png){: width="70%" height="70%"}
+        <img src="https://user-images.githubusercontent.com/69629703/140632649-37e61015-a265-4934-83a7-115d62a7e31d.png" width="700" height="600"/> 
         
         차량축간거리 L은 0.35m로 R을 구하여 전륜조향각(δ)를 구한다. 
         

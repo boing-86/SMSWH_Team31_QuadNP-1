@@ -69,20 +69,18 @@ installed open package
         L : 차량 축간 거리
         R : 후륜에서 목표지점까지의 곡률 반경(L에 비해 R이 큼)
         
-        ![Untitled (18)](https://user-images.githubusercontent.com/69629703/140632551-f1171a39-9346-45c3-930f-24662f604347.png)
+        ![Untitled (18)](https://user-images.githubusercontent.com/69629703/140632551-f1171a39-9346-45c3-930f-24662f604347.png){: width="70%" height="70%"}
         
         Figure1. Bicycle Model
         
         Lookahead Point 를 선택하기 위해 필요한 Lookahead Distance(전방 주시 예견거리, 이하 Ld)를 통해 전륜조향각(δ)를 계산할 수 있다. Ld가 짧으면 진동이 발생하며, 길면 Cut-Corner(코너에서 예정경로보다 빨리 코너링을 함) 현상이 발생한다. 본 서비스에서는 저속으로 이동하기 때문에 최대속력과 최소속력의 차이가 적으므로 고정 Ld값을 사용한다.
         
-        ![Untitled (19)](https://user-images.githubusercontent.com/69629703/140632649-37e61015-a265-4934-83a7-115d62a7e31d.png)
+        ![Untitled (19)](https://user-images.githubusercontent.com/69629703/140632649-37e61015-a265-4934-83a7-115d62a7e31d.png){: width="70%" height="70%"}
         
         차량축간거리 L은 0.35m로 R을 구하여 전륜조향각(δ)를 구한다. 
         
-        <aside>
         ![image](https://user-images.githubusercontent.com/69629703/140632715-d607067f-8780-45a2-b914-9b173ccdea9f.png)
         
-        </aside>
         
     - PCA9685
         

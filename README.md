@@ -1,5 +1,6 @@
 # SMSWH_Team31_QuadNP
 **2021 Sookmyung Software Hackathon**
+🏆 3등 수상 🏆
 
 ![KakaoTalk_20211107_235833050](https://user-images.githubusercontent.com/69629703/140650300-83ff9533-f72f-440c-88c8-1316ab1eaa6f.jpg)
 

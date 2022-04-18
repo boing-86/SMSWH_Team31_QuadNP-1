@@ -95,6 +95,12 @@ installed open package
         
         16채널 12비트 PWM 제어 모듈. 본 서비스에서는 PCA9685를 아두이노에 연결하여 각각 Servo모터와 ESC 모터를 구동하는데 사용한다. 
         
+ - 기타 회로도 및 아키텍쳐
+![슬라이드9](https://user-images.githubusercontent.com/54930076/163799770-646f7b51-53fa-4228-afab-a19e19fe3160.png)
+![슬라이드10](https://user-images.githubusercontent.com/54930076/163799775-e383b2a8-9d6f-47f7-8334-2e27f3efd573.png)
+![슬라이드11](https://user-images.githubusercontent.com/54930076/163799778-00be6492-08a4-4f3b-b626-b86466cdf20f.png)
+
+
 
 ### 주요기능
 

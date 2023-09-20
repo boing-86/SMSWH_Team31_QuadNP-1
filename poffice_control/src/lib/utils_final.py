@@ -120,14 +120,21 @@ class purePursuit :
 
         for i in self.path.poses: #i는 pose메시지 형태
             target_waypoint += 1
-            #print("steering angle for문 i = {}".format(current_waypoint))
             path_point = i.pose.position
             dy = path_point.x - self.current_position.x
             dx = path_point.y - self.current_position.y
 
+            ###### getRotatedPoint();
+
             target_enu = atan(dy/dx)*180/pi  #degree
             rotated_point.x = cos(self.gps_radian)*dx + sin(self.gps_radian)*dy
             # rotated_point.y = -sin(self.gps_yaw)*dx + cos(self.gps_yaw)*dy
+
+            ###### getTargetPoint()
+            ########## getNEUTargetYaw()
+            ########## getalpha()
+            ########## getSteeringAngle()
+            ##### noTargetPointException()
 
             # ENU <-> NEU (UP)
             if rotated_point.x < 0 :
